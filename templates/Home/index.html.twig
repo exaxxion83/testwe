@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'Home/form_theme.html.twig' %}
+
+{% block title %} Testwe-movies {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/build/css/main.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {% embed 'navigation.html.twig' %}{% endembed %}
+    <div class="container">
+        {% if user.userIdentifier is defined %}
+            <div class="row justify-content-md-center">
+                <div class="col-md-3">
+                    <a href="{{ path('movie', {operation: 'create'}) }}"><button type="button" class="btn btn-secondary">Create a movie</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ path('movie', {operation: 'edit'}) }}"><button type="button" class="btn btn-secondary">Edit a movie</button></a>
+                </div>
+            </div>
+        {% endif %}
+        {{ form_start(form, {'attr': {'id': 'search_form'}}) }}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_label(form.movie) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-25">
+                {{ form_widget(form.movie) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_label(form.actor) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-25">
+                {{ form_widget(form.actor) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_label(form.type) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-25">
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-25">
+                {{ form_row(form.search) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+

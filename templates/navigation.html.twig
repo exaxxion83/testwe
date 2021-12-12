@@ -1,0 +1,20 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light justify-content-center">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{{ path('home') }}"><img src="{{ asset('build/img/logo_testwe.png') }}" alt="testwe logo" width="40%"></a>
+        </div>
+        <div class="col-md-8">
+            <i class="far fa-user-circle pull-right fa-2x"></i>
+            {% if user.userIdentifier is defined %}
+                <span class="pull-right mr-8"> Hello {{ user.userIdentifier }} <br/>
+                        <a class="fs-10 pull-right color-red" href="{{ path('app_logout') }}">deconnexion</a>
+                    </span>
+            {% else %}
+                <a class="pull-right mr-8 mt-4 ml-8" href="{{ path('app_register') }}"> Register </a>
+                <span class="pull-right mt-4"> | </span>
+                <a class="pull-right mt-4 mr-8" href="{{ path('app_login') }}"> Login </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<div style="height:100px"></div>

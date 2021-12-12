@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MovieController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/build/css/main.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/movie.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {% embed 'navigation.html.twig' %}{% endembed %}
+    {% set isEdit = operation == 'edit' %}
+
+    <div class="container">
+        <h3 class="mb-25"> {{ isEdit ? 'Edit' : 'Create' }} movie</h3>
+        {% if isEdit %}
+            {% embed 'movie/edit.html.twig' %}{% endembed %}
+        {% else %}
+            {% embed 'movie/create.html.twig' %}{% endembed %}
+        {% endif %}
+    </div>
+{% endblock %}

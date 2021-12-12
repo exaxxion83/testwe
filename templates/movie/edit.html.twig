@@ -1,0 +1,41 @@
+<div class="form-group col-md-12">
+    <label for="movie">Movie</label>
+    <select id="movie" class="theme-single width-100">
+        {% for id, movie in movies %}
+            <option value="{{ id }}">{{ movie }}</option>
+        {% endfor %}
+    </select>
+</div>
+<form class="none" id="edit-movie" data-action="create">
+    <div class="form-group col-md-12">
+        <label for="movieTitle">Movie title</label>
+        <input type="text" class="form-control" id="movieTitle" name="title" placeholder="Enter movie title" required>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="duration">Duration</label>
+        <input type="number" class="form-control" id="duration" name="duration" placeholder="Minutes" required>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="casting">Casting</label>
+        <select id="casting" class="theme-single width-100" name="peoples[]" multiple="multiple">
+            {% for id, people in peoples %}
+                <option value="{{ id }}">{{ people }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="type">Type</label>
+        <select id="type" class="theme-single width-100" name="types[]" multiple="multiple">
+            {% for id, type in types %}
+                <option value="{{ id }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-12">
+        <input id="operationType" type="hidden" value="edit">
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+<div class="alert alert-success mt-25 none"  role="alert">
+    This changes are saved
+</div>

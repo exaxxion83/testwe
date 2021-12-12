@@ -1,0 +1,15 @@
+{% block _search_form_actor_widget %}
+    <select class="theme-single width-100" name="actor[]">
+        {% for actor in form.vars.choices %}
+            <option value="{{ actor.value }}">{{ actor.label }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}
+
+{% block _search_form_type_widget %}
+    <select class="theme-single width-100" name="type[]">
+        {% for type in form.vars.choices %}
+            <option value="{{ type.value }}">{{ type.label }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}
